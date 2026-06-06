@@ -5,20 +5,23 @@ import './App.css'
  export default function App() {
 
   return (
-     <div className="App">
-       Weather App
-       <footer>
-        This project was coded by Tess Allen and is 
-
-
-        <a
-          href="https://github.com/tessallen-cmd/my-app-test"
-          target="_blank"
-        >
-          open-sourced on Github
+    <div className="App">
+      <h1>Weather App </h1>
+      
+      <footer>
+        This project was coded by{" "} 
+        <a href = "" target="_blank">
+          Tess Allen
+      </a>{" "}
+        
+       
+        
+         and is{" "}
+        <a href="https://github.com/tessallen-cmd/my-app-test" target="_blank">
+           open-sourced on Github
         </a>
-       </footer> 
-       </div>
+      </footer>
+    </div>
   );
   }
 
