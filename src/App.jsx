@@ -7,14 +7,17 @@ import './App.css'
   return (
      <div className="App">
        Weather App
-       <p>
+       <footer>
+        This project was coded by Tess Allen and is 
 
 
         <a
           href="https://github.com/tessallen-cmd/my-app-test"
           target="_blank"
-        ></a>
-       </p> 
+        >
+          open-sourced on Github
+        </a>
+       </footer> 
        </div>
   );
   }
