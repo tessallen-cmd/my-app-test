@@ -1,5 +1,6 @@
 import React from 'react';
 
+import Weather from "./Weather";
 import './App.css'
 
  export default function App() {
@@ -9,8 +10,8 @@ import './App.css'
 <div className='container'>
 
 
-      <h1>Weather App </h1>
       
+      < Weather />
       <footer>
         This project was coded by{" "} 
         <a href = "" target="_blank">
