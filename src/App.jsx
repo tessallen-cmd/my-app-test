@@ -6,6 +6,9 @@ import './App.css'
 
   return (
     <div className="App">
+<div className='container'>
+
+
       <h1>Weather App </h1>
       
       <footer>
@@ -13,7 +16,6 @@ import './App.css'
         <a href = "" target="_blank">
           Tess Allen
       </a>{" "}
-        
        
         
          and is{" "}
@@ -21,6 +23,7 @@ import './App.css'
            open-sourced on Github
         </a>
       </footer>
+      </div>
     </div>
   );
   }
