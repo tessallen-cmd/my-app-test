@@ -20,7 +20,10 @@ import './App.css'
        
         
          and is{" "}
-        <a href="https://github.com/tessallen-cmd/my-app-test" target="_blank">
+        <a href="https://github.com/tessallen-cmd/my-app-test" 
+        target="_blank"
+        
+ >
            open-sourced on Github
         </a>
       </footer>
