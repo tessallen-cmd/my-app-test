@@ -1,6 +1,18 @@
-import React from "react";
+import React, {useState} from "react";
+import axios from"axios";
 import "./Weather.css";
+
+
 export default function Weather(){
+  const [ready,setReady] = useState(false);
+  const [temperature, setTemperature] = useState(null);
+  function handleResponse(response) {
+    console.log(response.data);
+    setTemperature(response.data.main.temp);
+    setReady (true);
+  }
+  if (ready) {
+   
     return (
       <div className="Weather">
         <form>
@@ -13,6 +25,7 @@ export default function Weather(){
                 autoFocus="on"
               />
             </div>
+
             <div className="col-3">
               <input
                 type="submit"
@@ -21,27 +34,26 @@ export default function Weather(){
               />
             </div>
           </div>
-          
         </form>
-        <h1>New York</h1>
+        <h1>New York </h1>
         <ul>
           <li>Wednesday 07:00</li>
           <li>Sunny</li>
         </ul>
         <div className="row mt-3">
-          <div className="col-6 " >
-           <div className="clearfix"> 
-         <img
-              src="https://www.gstatic.com/weather/conditions/v1/svg/sunny_light.svg"
-              alt="Sunny"
-              className="float-left"
-            />
-           
-            <span className="temperature">23</span>
-            <span className="unit">℃|℉ </span>
+          <div className="col-6 ">
+            <div className="clearfix">
+              <img
+                src="https://www.gstatic.com/weather/conditions/v1/svg/sunny_light.svg"
+                alt="Sunny"
+                className="float-left"
+              />
+
+              <span className="temperature">{Math.round(temperature)}</span>
+              <span className="unit">℃|℉ </span>
             </div>
-           </div>
-          
+          </div>
+
           <div className="col-6">
             <ul>
               <li>Precipitation: 0%</li>
@@ -52,4 +64,15 @@ export default function Weather(){
         </div>
       </div>
     );
+  } else {
+const apiKey = "9117d16f27ad34748062df20bto34069";
+let city = "New York";
+let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
+axios.get(apiUrl).then(handleResponse);
+
+
+    return "Loading....";
+  }
 }
+
+
