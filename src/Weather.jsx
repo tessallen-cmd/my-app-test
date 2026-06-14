@@ -4,25 +4,25 @@ import "./Weather.css";
 
 
 export default function Weather(){
-  const [ready,setReady] = useState(false);
-  const [weatherData, setWeatherData] = useState({});
+  
+  const [weatherData, setWeatherData] = useState({ready: false});
   function handleResponse(response) {
     console.log(response.data);
     
     setWeatherData({
-temperature:response.data.temperature.current,
-wind: response.data.wind.speed,
-city: response.data.city,
-humidity: response.data.humidity,
-
-
-
-
+      ready: true,
+      temperature: response.data.temperature.current,
+      humidity: response.data.temperature.humidity,
+      wind: response.data.wind.speed,
+      city: response.data.city,
+      description: response.data.condition.description,
+      iconUrl:"http://shecodes-assets.s3.amazonaws.com/api/weather/icons/broken-clouds-day.png",
+      date: "Wednesday 07:00",
     });
-    setReady (true);
+    
   }
 
-  if (ready) {
+  if (weatherData.ready) {
    
     return (
       <div className="Weather">
@@ -33,7 +33,7 @@ humidity: response.data.humidity,
                 type="search"
                 placeholder="Enter a city.."
                 className="form-control"
-                autoFocus="on"
+                autoFocus="true"
               />
             </div>
 
@@ -48,15 +48,15 @@ humidity: response.data.humidity,
         </form>
         <h1>{weatherData.city}</h1>
         <ul>
-          <li>Wednesday 07:00</li>
-          <li>Sunny</li>
+          <li>{weatherData.date}</li>
+          <li className="text-capitalize">{weatherData.description}</li>
         </ul>
         <div className="row mt-3">
           <div className="col-6 ">
             <div className="clearfix">
               <img
-                src="https://www.gstatic.com/weather/conditions/v1/svg/sunny_light.svg"
-                alt="Sunny"
+                src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/broken-clouds-day.png"
+                alt={weatherData.description}
                 className="float-left"
               />
 
@@ -69,8 +69,10 @@ humidity: response.data.humidity,
 
           <div className="col-6">
             <ul>
-              <li>Humidity: {weatherData.humidity}</li>
-              <li>Wind: {weatherData.wind}</li>
+              <li>
+                <li> Humidity:{weatherData.humidity}%</li>
+                <li>Wind: {weatherData.wind} kmph</li>
+              </li>
             </ul>
           </div>
         </div>
@@ -78,9 +80,9 @@ humidity: response.data.humidity,
     );
   } else {
 const apiKey = "9117d16f27ad34748062df20bto34069";
-let city = "New York";
-let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
-axios.get(apiUrl).then(handleResponse);
+
+let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${prop.defaultCity}&key=${apiKey}&units=metric`;
+axios.get(apiUrl).then(handleResponse); 
 
 
     return "Loading....";

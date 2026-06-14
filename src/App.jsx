@@ -3,7 +3,7 @@ import React from 'react';
 import Weather from "./Weather";
 import './App.css'
 
- export default function App() {
+ export default function App(props) {
 
   return (
     <div className="App">
@@ -11,7 +11,7 @@ import './App.css'
 
 
       
-      < Weather />
+      < Weather defaultCity ="New York" />
       <footer>
         This project was coded by{" "} 
         <a href = "" target="_blank">
